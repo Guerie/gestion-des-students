@@ -1,0 +1,16 @@
+<form [formGroup]="studentForm">
+    <input
+    placeholder="name"
+    formControlName="nom">
+    <div class="alert" *ngIf="nom.touched && nom.errors">Votre saisie est invalide! </div>
+    <input 
+    placeholder="firstname"
+    formControlName="prenom">
+    <div class="alert" *ngIf="prenom.touched && prenom.errors">Votre saisie est invalide! </div>
+    <label>Full adress</label>
+    <textarea formControlName="adresse"></textarea>
+
+    <button type="submit"
+    [disabled]="studentForm.invalid"
+    (click)="add()"> Valider</button>
+</form>
