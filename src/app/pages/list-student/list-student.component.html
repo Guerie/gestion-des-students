@@ -1,25 +1,31 @@
 <div>
-    <table border="1" cellpadding="0" cellspacing="0">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Nom</th>
-          <th>Prenom</th>
-          <th>Adresse</th>
-        </tr>
-      </thead>
-  
-      <tbody>
-        <tr *ngFor="let student of studentCollection.getCollection() | keyvalue">
-          <td>{{ student.value.getId() }}</td>
-          <td>{{ student.value.getNom() }}</td>
-          <td>{{ student.value.getPrenom() }}</td>
-          <td>{{ student.value.getAdresse() }}</td>
-          <button type="button">Update</button> 
-          <button type="button" (click)="removeStudent(student.value)"> Delete </button> 
-        </tr>
-        <button type="button" (click)="go()">Nouveau</button>
-      </tbody>
-    </table>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Id Column -->
+      <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let studentCollection"> {{studentCollection.id}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="nom">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let studentCollection"> {{studentCollection.nom}} </td>
+          </ng-container>
+      
+        <!-- Firstname Column -->
+        <ng-container matColumnDef="prenom">
+          <th mat-header-cell *matHeaderCellDef> Firstname </th>
+          <td mat-cell *matCellDef="let studentCollection"> {{studentCollection.prenom}} </td>
+        </ng-container>
+      
+        <!-- Adress Column -->
+        <ng-container matColumnDef="adresse">
+          <th mat-header-cell *matHeaderCellDef> Adress </th>
+          <td mat-cell *matCellDef="let studentCollection"> {{studentCollection.adresse}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
   </div>
   

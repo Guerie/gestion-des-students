@@ -6,6 +6,13 @@ import { StudentCollection } from './../../share/models/student-collection';
 import { ToastrService } from 'ngx-toastr';
 import {Router} from '@angular/router';
 
+export interface StudentCollection {
+  id: number;
+  nom: string;
+  prenom: string;
+  adresse: string;
+}
+
 @Component({
   selector: 'app-list-student',
   templateUrl: './list-student.component.html',
@@ -13,6 +20,9 @@ import {Router} from '@angular/router';
 })
 export class ListStudentComponent implements OnInit {
   public studentCollection: StudentCollection;
+  public displayedColumns: string[] = ['id', 'nom', 'prenom', 'adresse'];
+  public dataSource = null;
+  
   public constructor(
     private api: ApiService, 
     private toastrService: ToastrService, 
@@ -34,6 +44,7 @@ export class ListStudentComponent implements OnInit {
         //Ranger les students dans le casier:
           this.studentCollection.add(aStudent);
         });
+        this.dataSource = this.studentCollection.toArray();
       }      
     });
   }

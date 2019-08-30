@@ -10,6 +10,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AddStudentComponent } from './pages/add-student/add-student.component';
 import { ListStudentComponent } from './pages/list-student/list-student.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from './share/ui/material/material.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ],
   providers: [
     ApiService

@@ -25,6 +25,10 @@ export class StudentCollection {
     public getCollection(): Map<number, Student>{
         return this.students;
     }
+
+    public toArray(): Array<Student> {
+        return Array.from(this.students.values());
+    }
     /**
      * Add a student in that collection
      * @param student 
